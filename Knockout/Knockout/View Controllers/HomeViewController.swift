@@ -5,6 +5,7 @@
 //
 
 import UIKit
+import CoreData
 
 class HomeViewController: UIViewController {
     
@@ -26,18 +27,17 @@ class HomeViewController: UIViewController {
     
     // MARK: - Properties
     
-    private var data: [String] = ["Mumbai Indians",
-                                  "Royal Challenger Banglore",
-                                  "Delhi Capitals",
-                                  "Sunrised Hydrabad",
-                                  "Rajesthan Royals",
-                                  "Chennai Super Kings",
-                                  "Kings XII Punjab",
-                                  "Kolkata Knight Riders"
-                                  
-    ]
+    private var tournamentTeams: [FixtureManager.TupleElements] = [] {
+        didSet {
+            viewModel.set(tournamentTeams: tournamentTeams)
+        }
+    }
     
-    private var tournamentTeams: [FixtureManager.TupleElements] = []
+    var context: NSManagedObjectContext {
+        return ((UIApplication.shared.delegate) as! AppDelegate).persistentContainer.viewContext
+    }
+    
+    lazy var viewModel = HomeViewModel(context: context)
     
     // MARK: - Life cycle
     
@@ -47,6 +47,7 @@ class HomeViewController: UIViewController {
     }
     
     private func setupUI() {
+        viewModel.delegate = self
         tableView.dataSource = self
         navigationItem.hidesBackButton = true
         
@@ -61,34 +62,42 @@ class HomeViewController: UIViewController {
         } else {
             primaryCTA.setTitle("Start IPL", for: .normal)
         }
+        if !self.tournamentTeams.isEmpty {
+            viewModel.set(tournamentTeams: self.tournamentTeams)
+        }
     }
     
     // MARK: - IBActions
     
     @IBAction func primaryCTATapped(_ sender: Any) {
         if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "HomeViewController") as? HomeViewController {
-            viewController.isTournamentGoingOn = data.count == 2 ? false : true
+            viewController.isTournamentGoingOn = viewModel.getNumberOfRows() == 2 ? false : true
             
             if isTournamentGoingOn {
-                let teams = FixtureManager.shared.eliminateTeams()
+                let teams = viewModel.eliminateTeams()
                 viewController.isTournamentFinished = (teams.count == 1 && tournamentTeams.count == 1) ? true : false
                 viewController.isTournamentGoingOn = (teams.count == 1 && tournamentTeams.count == 1) ? false : true
                 viewController.isFinal = (teams.count == 1 && tournamentTeams.count == 1 && viewController.isTournamentFinished) ? true : false
                 viewController.tournamentTeams = teams
             } else {
-                FixtureManager.shared.setData(data)
-                viewController.tournamentTeams = FixtureManager.shared.getTeamPairs()
+                viewModel.setFixtureData()
+                viewController.tournamentTeams = viewModel.getTeamPairs()
                 viewController.isTournamentGoingOn = true
             }
             navigationController?.pushViewController(viewController, animated: true)
         }
+    }
+    
+    @IBAction func goHomeTapped(_ sender: Any) {
+        viewModel.clearTournamentData()
+        navigationController?.popToRootViewController(animated: true)
     }
 }
 
 extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tournamentTeams.isEmpty ? data.count : tournamentTeams.count
+        return viewModel.getNumberOfRows()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -96,16 +105,23 @@ extension HomeViewController: UITableViewDataSource {
         if tournamentTeams.isEmpty {
             let cell = tableView.dequeueReusableCell(withIdentifier: Constants.titleCell, for: indexPath)
             cell.textLabel?.textAlignment = .center
-            cell.textLabel?.text = data[indexPath.row]
+            cell.textLabel?.text = viewModel.getTeam(at: indexPath.row)
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.tournamentCell, for: indexPath) as? TournamentCell else { return UITableViewCell() }
             if isFinal {
-                cell.setupUIForWinner(teamPair: tournamentTeams[indexPath.row])
+                cell.setupUIForWinner(teamPair: viewModel.getTournamentTeam(at: indexPath.row))
             } else {
-                cell.setupUIForTournament(teamPair: tournamentTeams[indexPath.row])
+                cell.setupUIForTournament(teamPair: viewModel.getTournamentTeam(at: indexPath.row))// tournamentTeams[indexPath.row])
             }
             return cell
+        }
+    }
+}
+extension HomeViewController: HomeViewModelDelegate {
+    func reloadData() {
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
         }
     }
 }

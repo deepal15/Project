@@ -104,4 +104,9 @@ final class FixtureManager {
         removePairsRandomly()
         return currentActivePairs
     }
+    
+    public func clearData() {
+        currentActivePairs.removeAll(keepingCapacity: true)
+        data.removeAll(keepingCapacity: true)
+    }
 }

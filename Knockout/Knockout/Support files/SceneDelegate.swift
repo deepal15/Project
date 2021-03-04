@@ -5,6 +5,7 @@
 //
 
 import UIKit
+import CoreData
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -46,7 +47,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
 
         // Save changes in the application's managed object context when the application transitions to the background.
+        UserDefaults.standard.removeObject(forKey: "DB")
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Team")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+
+        let coordinator = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.persistentStoreCoordinator
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        do {
+            try coordinator.execute(deleteRequest, with: context)
+        } catch _ as NSError {
+            // TODO: handle the error
+        }
+        
     }
 
 

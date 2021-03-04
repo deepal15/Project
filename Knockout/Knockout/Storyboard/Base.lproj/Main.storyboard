@@ -78,7 +78,13 @@
                             <constraint firstItem="mwb-9f-gEg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="mQM-Bb-me1"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="BOt-6m-1gI"/>
+                    <navigationItem key="navigationItem" id="BOt-6m-1gI">
+                        <barButtonItem key="rightBarButtonItem" title="Home" id="mKF-Uv-uqE">
+                            <connections>
+                                <action selector="goHomeTapped:" destination="BYZ-38-t0r" id="v8z-QC-o5V"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="primaryCTA" destination="iai-IM-sez" id="yKw-5C-LKO"/>
                         <outlet property="tableView" destination="mwb-9f-gEg" id="bxq-zL-DPS"/>
@@ -99,12 +105,121 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="GN4-ax-02E"/>
+                        <segue destination="zjw-wE-N8G" kind="relationship" relationship="rootViewController" id="KQ6-sW-i8H"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3CB-ek-ABe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140.57971014492756" y="130.58035714285714"/>
+            <point key="canvasLocation" x="-1294" y="856"/>
+        </scene>
+        <!--Selection View Controller-->
+        <scene sceneID="0bZ-ei-7jQ">
+            <objects>
+                <viewController id="zjw-wE-N8G" customClass="SelectionViewController" customModule="Knockout" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VFJ-m9-q78">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="yUK-52-Gmm">
+                                <rect key="frame" x="107" y="375" width="200" height="200"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BK8-qD-Xb8">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="33.5"/>
+                                        <state key="normal" title="Static Content"/>
+                                        <connections>
+                                            <action selector="showStaticContent" destination="zjw-wE-N8G" eventType="touchUpInside" id="7L3-pd-Y8E"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aCg-Eu-nDx">
+                                        <rect key="frame" x="0.0" y="83.5" width="200" height="33"/>
+                                        <state key="normal" title="Database content"/>
+                                        <connections>
+                                            <action selector="showDBContent" destination="zjw-wE-N8G" eventType="touchUpInside" id="GqZ-xE-6mL"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RDF-XD-WOm">
+                                        <rect key="frame" x="0.0" y="166.5" width="200" height="33.5"/>
+                                        <state key="normal" title="Add Team"/>
+                                        <connections>
+                                            <action selector="showAddTeam" destination="zjw-wE-N8G" eventType="touchUpInside" id="zqU-Y9-h2R"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Fbq-nB-rUe"/>
+                                    <constraint firstAttribute="width" constant="200" id="sDj-Ib-OeX"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="iyZ-9j-gQD"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="yUK-52-Gmm" firstAttribute="centerX" secondItem="iyZ-9j-gQD" secondAttribute="centerX" id="YzA-xu-rpJ"/>
+                            <constraint firstItem="yUK-52-Gmm" firstAttribute="centerY" secondItem="iyZ-9j-gQD" secondAttribute="centerY" id="g2h-fH-OLO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="dGc-qZ-ggs"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="ShowDBContent" id="13T-dR-VeD"/>
+                        <segue destination="9VT-l2-56u" kind="presentation" identifier="AddTeam" id="cfx-hE-20r"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nmG-ef-bQ1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-417" y="856"/>
+        </scene>
+        <!--Add Teams View Controller-->
+        <scene sceneID="Y9q-vA-6AW">
+            <objects>
+                <viewController id="9VT-l2-56u" customClass="AddTeamsViewController" customModule="Knockout" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jfM-Hl-oJ4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UC9-nK-taR">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="758"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="eUV-Zx-qyG">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eUV-Zx-qyG" id="i5l-tg-1YP">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZXs-bA-Xg6">
+                                <rect key="frame" x="0.0" y="758" width="414" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="gXX-dk-f8B"/>
+                                </constraints>
+                                <state key="normal" title="Add Team"/>
+                                <connections>
+                                    <action selector="addTeamCTATapped:" destination="9VT-l2-56u" eventType="touchUpInside" id="e5P-Oe-aFz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="LEj-JA-Ual"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ZXs-bA-Xg6" firstAttribute="bottom" secondItem="LEj-JA-Ual" secondAttribute="bottom" id="3sX-at-khw"/>
+                            <constraint firstItem="ZXs-bA-Xg6" firstAttribute="top" secondItem="UC9-nK-taR" secondAttribute="bottom" id="42x-xr-JqQ"/>
+                            <constraint firstItem="UC9-nK-taR" firstAttribute="top" secondItem="LEj-JA-Ual" secondAttribute="top" id="9WV-Ck-d1Q"/>
+                            <constraint firstItem="LEj-JA-Ual" firstAttribute="trailing" secondItem="UC9-nK-taR" secondAttribute="trailing" id="Pqp-6I-Df2"/>
+                            <constraint firstItem="LEj-JA-Ual" firstAttribute="trailing" secondItem="ZXs-bA-Xg6" secondAttribute="trailing" id="Rgs-3Z-zFJ"/>
+                            <constraint firstItem="ZXs-bA-Xg6" firstAttribute="leading" secondItem="LEj-JA-Ual" secondAttribute="leading" id="dav-kV-gHP"/>
+                            <constraint firstItem="UC9-nK-taR" firstAttribute="leading" secondItem="LEj-JA-Ual" secondAttribute="leading" id="et2-h0-KCk"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="UC9-nK-taR" id="oeR-gf-6wG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IZE-UP-K8I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1031.8840579710145" y="855.80357142857144"/>
         </scene>
     </scenes>
     <resources>

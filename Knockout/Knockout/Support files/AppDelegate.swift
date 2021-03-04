@@ -30,6 +30,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        UserDefaults.standard.removeObject(forKey: "DB")
+        
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Team")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+
+        let coordinator = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.persistentStoreCoordinator
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        do {
+            try coordinator.execute(deleteRequest, with: context)
+        } catch  _ as NSError {
+            // TODO: handle the error
+        }
+    }
 
     // MARK: - Core Data stack
 

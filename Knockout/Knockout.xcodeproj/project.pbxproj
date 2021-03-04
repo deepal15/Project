@@ -11,7 +11,6 @@
 		F759905D25F0F85200637BD1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F759905C25F0F85200637BD1 /* SceneDelegate.swift */; };
 		F759905F25F0F85200637BD1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F759905E25F0F85200637BD1 /* HomeViewController.swift */; };
 		F759906225F0F85200637BD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F759906025F0F85200637BD1 /* Main.storyboard */; };
-		F759906525F0F85200637BD1 /* Knockout.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F759906325F0F85200637BD1 /* Knockout.xcdatamodeld */; };
 		F759906725F0F85500637BD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F759906625F0F85500637BD1 /* Assets.xcassets */; };
 		F759906A25F0F85500637BD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F759906825F0F85500637BD1 /* LaunchScreen.storyboard */; };
 		F759907525F0F85500637BD1 /* KnockoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F759907425F0F85500637BD1 /* KnockoutTests.swift */; };
@@ -20,6 +19,12 @@
 		F759909625F11E6500637BD1 /* TournamentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F759909525F11E6500637BD1 /* TournamentCell.swift */; };
 		F759909C25F131F100637BD1 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F759909B25F131F100637BD1 /* DatabaseManager.swift */; };
 		F75990C525F1339D00637BD1 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75990C425F1339D00637BD1 /* HomeViewModel.swift */; };
+		F7957A6425F137B1008FDE08 /* Team+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7957A6225F137B1008FDE08 /* Team+CoreDataClass.swift */; };
+		F7957A6525F137B1008FDE08 /* Team+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7957A6325F137B1008FDE08 /* Team+CoreDataProperties.swift */; };
+		F7957A6A25F1391E008FDE08 /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7957A6925F1391E008FDE08 /* SelectionViewController.swift */; };
+		F7957A6F25F139A2008FDE08 /* AddTeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7957A6E25F139A2008FDE08 /* AddTeamsViewController.swift */; };
+		F7957A7425F13BDF008FDE08 /* AddTeamsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7957A7325F13BDF008FDE08 /* AddTeamsViewModel.swift */; };
+		F7957A7825F14570008FDE08 /* Knockout.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F759906325F0F85200637BD1 /* Knockout.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +64,11 @@
 		F759909525F11E6500637BD1 /* TournamentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentCell.swift; sourceTree = "<group>"; };
 		F759909B25F131F100637BD1 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		F75990C425F1339D00637BD1 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		F7957A6225F137B1008FDE08 /* Team+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Team+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		F7957A6325F137B1008FDE08 /* Team+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Team+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		F7957A6925F1391E008FDE08 /* SelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
+		F7957A6E25F139A2008FDE08 /* AddTeamsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTeamsViewController.swift; sourceTree = "<group>"; };
+		F7957A7325F13BDF008FDE08 /* AddTeamsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTeamsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +119,7 @@
 		F759905925F0F85200637BD1 /* Knockout */ = {
 			isa = PBXGroup;
 			children = (
+				F7957A6125F1379D008FDE08 /* Core Data */,
 				F75990BD25F1334900637BD1 /* Manager */,
 				F75990BC25F1333A00637BD1 /* Storyboard */,
 				F75990BB25F1333200637BD1 /* Support files */,
@@ -142,6 +153,9 @@
 				F759905E25F0F85200637BD1 /* HomeViewController.swift */,
 				F75990C425F1339D00637BD1 /* HomeViewModel.swift */,
 				F759909525F11E6500637BD1 /* TournamentCell.swift */,
+				F7957A6925F1391E008FDE08 /* SelectionViewController.swift */,
+				F7957A6E25F139A2008FDE08 /* AddTeamsViewController.swift */,
+				F7957A7325F13BDF008FDE08 /* AddTeamsViewModel.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -173,6 +187,15 @@
 				F759909B25F131F100637BD1 /* DatabaseManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		F7957A6125F1379D008FDE08 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				F7957A6225F137B1008FDE08 /* Team+CoreDataClass.swift */,
+				F7957A6325F137B1008FDE08 /* Team+CoreDataProperties.swift */,
+			);
+			path = "Core Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,13 +328,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7957A7825F14570008FDE08 /* Knockout.xcdatamodeld in Sources */,
 				F759905F25F0F85200637BD1 /* HomeViewController.swift in Sources */,
+				F7957A7425F13BDF008FDE08 /* AddTeamsViewModel.swift in Sources */,
 				F759905B25F0F85200637BD1 /* AppDelegate.swift in Sources */,
 				F759909125F117E800637BD1 /* FixtureManager.swift in Sources */,
+				F7957A6525F137B1008FDE08 /* Team+CoreDataProperties.swift in Sources */,
 				F75990C525F1339D00637BD1 /* HomeViewModel.swift in Sources */,
+				F7957A6A25F1391E008FDE08 /* SelectionViewController.swift in Sources */,
 				F759905D25F0F85200637BD1 /* SceneDelegate.swift in Sources */,
+				F7957A6F25F139A2008FDE08 /* AddTeamsViewController.swift in Sources */,
 				F759909625F11E6500637BD1 /* TournamentCell.swift in Sources */,
-				F759906525F0F85200637BD1 /* Knockout.xcdatamodeld in Sources */,
+				F7957A6425F137B1008FDE08 /* Team+CoreDataClass.swift in Sources */,
 				F759909C25F131F100637BD1 /* DatabaseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
