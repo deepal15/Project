@@ -9,13 +9,19 @@ import CoreData
 
 final class AddTeamsViewModel {
     
+    // MARK: - Properties
+    
     private var teams: [Team] = []
     
     private var databaseManager: DatabaseManager?
     
+    // MARK: - Init
+    
     init(context: NSManagedObjectContext) {
         databaseManager = DatabaseManager(managedObjectContext: context)
     }
+    
+    // MARK: - Functions
     
     func addTeamToDB(name: String) {
         databaseManager?.addTeam(name: name)

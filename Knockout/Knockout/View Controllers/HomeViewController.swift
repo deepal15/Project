@@ -112,7 +112,7 @@ extension HomeViewController: UITableViewDataSource {
             if isFinal {
                 cell.setupUIForWinner(teamPair: viewModel.getTournamentTeam(at: indexPath.row))
             } else {
-                cell.setupUIForTournament(teamPair: viewModel.getTournamentTeam(at: indexPath.row))// tournamentTeams[indexPath.row])
+                cell.setupUIForTournament(teamPair: viewModel.getTournamentTeam(at: indexPath.row))
             }
             return cell
         }

@@ -13,16 +13,22 @@ protocol HomeViewModelDelegate: AnyObject {
 
 final class HomeViewModel {
     
+    // MARK: - Properties
+    
     private var teams: [String] = []
     private var databaseManager: DatabaseManager?
     private var tournamentTeams: [FixtureManager.TupleElements] = []
     weak var delegate: HomeViewModelDelegate?
+    
+    // MARK: - Init
     
     init(context: NSManagedObjectContext) {
         databaseManager = DatabaseManager(managedObjectContext: context)
         getData()
         delegate?.reloadData()
     }
+    
+    // MARK: - Functions
     
     func set(tournamentTeams: [FixtureManager.TupleElements]) {
         self.tournamentTeams = tournamentTeams
@@ -80,7 +86,6 @@ final class HomeViewModel {
     func eliminateTeams() -> [FixtureManager.TupleElements] {
         return FixtureManager.shared.eliminateTeams()
     }
-    
     
     func clearTournamentData() {
         FixtureManager.shared.clearData()

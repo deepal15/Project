@@ -16,17 +16,51 @@ class KnockoutTests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testFixtureManagerTeamPairs() {
+        let array = ["First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth"]
+        FixtureManager.shared.setData(array)
+        let pairs = FixtureManager.shared.getTeamPairs()
+        XCTAssertEqual(4, pairs.count)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    /// Function to test if the FixtureManager has no data then it would not continue the processing
+    func testFixtureManagerWithNoData() {
+        let array: [String] = []
+        FixtureManager.shared.setData(array)
+        let pairs = FixtureManager.shared.getTeamPairs()
+        XCTAssertEqual(0, pairs.count)
     }
-
+    
+    /// Function to test if the FixtureManager has odd number of data then it would not continue the processing
+    func testFixtureManagerOddElements() {
+        let array = ["First", "Second", "Third",]
+        FixtureManager.shared.setData(array)
+        let pairs = FixtureManager.shared.getTeamPairs()
+        XCTAssertEqual(0, pairs.count)
+    }
+    
+    /// Function to eliminate random elements in the first round, and returns the removed pairs
+    /// e.g. ["First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth"] that would make 4 Team Pairs
+    /// after first elimination 2 Teams would get eliminated (Half of total Paired Teams)
+    func testFixtureManagerEliminateTeamsFirstIteration() {
+        let array = ["First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth"]
+        FixtureManager.shared.setData(array)
+        var pairs = FixtureManager.shared.getTeamPairs()
+        pairs = FixtureManager.shared.eliminateTeams()
+        XCTAssertEqual(2, pairs.count)
+    }
+    
+    /// Function to eliminate random elements in the first round, and returns the removed pairs
+    /// e.g. ["First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth"] that would make 4 Team Pairs
+    /// after first elimination 2 Teams would get eliminated (Half of total Paired Teams)
+    /// after second elimination 1 Team would get elimniated (Half of total Paired Teams)
+    func testFixtureManagerEliminateTeamsSecondIteration() {
+        let array = ["First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth"]
+        FixtureManager.shared.setData(array)
+        var pairs = FixtureManager.shared.getTeamPairs()
+        pairs = FixtureManager.shared.eliminateTeams()
+        pairs = FixtureManager.shared.eliminateTeams()
+        XCTAssertEqual(1, pairs.count)
+    }
 }

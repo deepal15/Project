@@ -25,6 +25,7 @@
 		F7957A6F25F139A2008FDE08 /* AddTeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7957A6E25F139A2008FDE08 /* AddTeamsViewController.swift */; };
 		F7957A7425F13BDF008FDE08 /* AddTeamsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7957A7325F13BDF008FDE08 /* AddTeamsViewModel.swift */; };
 		F7957A7825F14570008FDE08 /* Knockout.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F759906325F0F85200637BD1 /* Knockout.xcdatamodeld */; };
+		F7957A8425F16C4B008FDE08 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F7957A8325F16C4B008FDE08 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		F7957A6925F1391E008FDE08 /* SelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
 		F7957A6E25F139A2008FDE08 /* AddTeamsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTeamsViewController.swift; sourceTree = "<group>"; };
 		F7957A7325F13BDF008FDE08 /* AddTeamsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTeamsViewModel.swift; sourceTree = "<group>"; };
+		F7957A8325F16C4B008FDE08 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		F759904E25F0F85200637BD1 = {
 			isa = PBXGroup;
 			children = (
+				F7957A8325F16C4B008FDE08 /* README.md */,
 				F759905925F0F85200637BD1 /* Knockout */,
 				F759907325F0F85500637BD1 /* KnockoutTests */,
 				F759907E25F0F85500637BD1 /* KnockoutUITests */,
@@ -119,6 +122,7 @@
 		F759905925F0F85200637BD1 /* Knockout */ = {
 			isa = PBXGroup;
 			children = (
+				F7957A7F25F16676008FDE08 /* ViewModels */,
 				F7957A6125F1379D008FDE08 /* Core Data */,
 				F75990BD25F1334900637BD1 /* Manager */,
 				F75990BC25F1333A00637BD1 /* Storyboard */,
@@ -151,11 +155,9 @@
 			isa = PBXGroup;
 			children = (
 				F759905E25F0F85200637BD1 /* HomeViewController.swift */,
-				F75990C425F1339D00637BD1 /* HomeViewModel.swift */,
-				F759909525F11E6500637BD1 /* TournamentCell.swift */,
 				F7957A6925F1391E008FDE08 /* SelectionViewController.swift */,
 				F7957A6E25F139A2008FDE08 /* AddTeamsViewController.swift */,
-				F7957A7325F13BDF008FDE08 /* AddTeamsViewModel.swift */,
+				F759909525F11E6500637BD1 /* TournamentCell.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -196,6 +198,15 @@
 				F7957A6325F137B1008FDE08 /* Team+CoreDataProperties.swift */,
 			);
 			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		F7957A7F25F16676008FDE08 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F75990C425F1339D00637BD1 /* HomeViewModel.swift */,
+				F7957A7325F13BDF008FDE08 /* AddTeamsViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,6 +314,7 @@
 			files = (
 				F759906A25F0F85500637BD1 /* LaunchScreen.storyboard in Resources */,
 				F759906725F0F85500637BD1 /* Assets.xcassets in Resources */,
+				F7957A8425F16C4B008FDE08 /* README.md in Resources */,
 				F759906225F0F85200637BD1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,13 +9,19 @@ import CoreData
 
 class AddTeamsViewController: UIViewController {
     
+    // MARK: - IBOutlets
+    
     @IBOutlet weak var tableView: UITableView!
+    
+    // MARK: - Properties
     
     var context: NSManagedObjectContext {
         return ((UIApplication.shared.delegate) as! AppDelegate).persistentContainer.viewContext
     }
     
     lazy var viewModel = AddTeamsViewModel(context: context)
+    
+    // MARK - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +35,8 @@ class AddTeamsViewController: UIViewController {
             self?.tableView.reloadData()
         }
     }
+    
+    // MARK: - IBActions
     
     @IBAction func addTeamCTATapped(_ sender: Any) {
         

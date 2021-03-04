@@ -2,18 +2,20 @@
 //  SelectionViewController.swift
 //  Knockout
 //
-//  Created by Patel, Deepal Atulkumar on 3/4/21.
 //
 
 import UIKit
 
 class SelectionViewController: UIViewController {
 
+    // MARK: - Life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
+        self.title = "IPL Tournament"
     }
+    
+    // MARK: - IBAction
     
     @IBAction func showAddTeam() {
         performSegue(withIdentifier: "AddTeam", sender: nil)
